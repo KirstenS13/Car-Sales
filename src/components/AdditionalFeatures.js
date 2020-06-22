@@ -8,6 +8,9 @@ import { connect } from 'react-redux';
 //import reducer and state
 import { initialState, rootReducer } from '../reducers/index';
 
+//import addFeature from actions
+import { addFeature } from '../actions/index';
+
 const AdditionalFeatures = props => {
   //use useReducer
   const [state, dispatch] = useReducer(rootReducer, initialState);
@@ -36,4 +39,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {})(AdditionalFeatures);
+const mapDispatchToProps = dispatch => {
+  return {
+    addFeature: newFeature => dispatch(addFeature(newFeature))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdditionalFeatures);

@@ -13,6 +13,8 @@ const AddedFeatures = props => {
   //useReducer
   const [state, dispatch] = useReducer(rootReducer, initialState);
 
+  console.log('props in AddedFeature.js', props );
+
   return (
     <div className="content">
       <h6>Added features:</h6>

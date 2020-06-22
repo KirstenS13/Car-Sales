@@ -1,5 +1,7 @@
 //create reducers here
 
+import { ADD_FEATURE } from "../actions";
+
 //initialize state with the state object from App.js
 export const initialState = {
     additionalPrice: 0,
@@ -22,7 +24,16 @@ export const initialState = {
 export const rootReducer = (state = initialState, action) => {
     console.log('state from rootReducer', state)
     switch (action.type) {
-        default:
-            return state;
+      case ADD_FEATURE:
+        console.log("add_feature from reducer")
+        return {
+          ...state,
+          car: {
+            ...state.car,
+            features: [...state.car.features, action.payload]
+          }
+        };
+      default:
+        return state;
     }
 }
