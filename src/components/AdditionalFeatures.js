@@ -30,7 +30,7 @@ const AdditionalFeatures = props => {
 
 //define what component needs from application store
 const mapStateToProps = state => {
-  console.log('state from mapStateToProps in Total.js', state)
+  console.log('state from mapStateToProps in AdditionalFeatures.js', state)
   return {
     additionalFeatures: state.additionalFeatures
   }
