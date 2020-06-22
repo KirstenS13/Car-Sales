@@ -19,7 +19,7 @@ export const initialState = {
   };
 
 //create reducer
-export const rootReducer = (state, action) => {
+export const rootReducer = (state = initialState, action) => {
     console.log('state from rootReducer', state)
     switch (action.type) {
         default:
