@@ -18,7 +18,11 @@ export const initialState = {
     ]
   };
 
-  //create reducer
-  export const rootReducer = (state, action) => {
-      return state;
-  }
+//create reducer
+export const rootReducer = (state, action) => {
+    console.log('state from rootReducer', state)
+    switch (action.type) {
+        default:
+            return state;
+    }
+}

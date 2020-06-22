@@ -8,10 +8,13 @@ import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 
 //import our reducer
-import { rootReducer } from './reducers/index';
+import { initialState, rootReducer } from './reducers/index';
 
 //create store
-export const store = createStore(rootReducer);
+export const store = createStore(rootReducer, initialState);
+
+console.log('store.getState() from outside of App function', store.getState());
+console.log('store from app', store)
 
 const App = () => {
   const state = {
