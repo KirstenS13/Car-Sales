@@ -1,6 +1,6 @@
 //create reducers here
 
-import { ADD_FEATURE, REMOVE_FEATURE, ADD_COST } from "../actions";
+import { ADD_FEATURE, REMOVE_FEATURE } from "../actions";
 
 //initialize state with the state object from App.js
 export const initialState = {
