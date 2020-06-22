@@ -17,7 +17,7 @@ export const store = createStore(rootReducer);
 console.log('store.getState() from outside of App function', store.getState());
 console.log('store from app', store)
 
-const App = () => {
+const App = (props) => {
   /* const state = {
     additionalPrice: 0,
     car: {
@@ -38,12 +38,12 @@ const App = () => {
   return (
     <div className="boxes">
       <div className="box">
-        <Header car={store.getState().car} />
-        <AddedFeatures car={store.getState().car} />
+        <Header car={props.car} />
+        <AddedFeatures car={props.car} />
       </div>
       <div className="box">
-        <AdditionalFeatures additionalFeatures={store.getState().additionalFeatures} />
-        <Total car={store.getState().car} additionalPrice={store.getState().additionalPrice} />
+        <AdditionalFeatures additionalFeatures={props.additionalFeatures} />
+        <Total car={props.car} additionalPrice={props.additionalPrice} />
       </div>
     </div>
   );

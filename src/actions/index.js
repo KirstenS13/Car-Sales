@@ -9,9 +9,11 @@ export const addFeature = newFeature => {
 };
 
 export const removeFeature = featureToRemove => {
+    console.log('removeFeature action creator');
     return {type: REMOVE_FEATURE, payload: featureToRemove}
 };
 
 export const addCost = newTotal => {
+    console.log('addCost action creator');
     return {type: ADD_COST, payload: newTotal}
 };

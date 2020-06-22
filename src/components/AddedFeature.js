@@ -8,15 +8,15 @@ import { connect } from 'react-redux';
 import { removeFeature } from '../actions/index';
 
 const AddedFeature = props => {
-  const [featureToRemove, setFeatureToRemove] = useState({
+  /* const [featureToRemove, setFeatureToRemove] = useState({
     id: '',
     name: '',
     price: ''
-  })
+  }) */
 
-  const [state, dispatch] = useReducer(rootReducer, initialState);
+  //const [state, dispatch] = useReducer(rootReducer, initialState);
 
-  const handleChanges = () => {
+  /* const handleChanges = () => {
     console.log('remove feature has been clicked');
     setFeatureToRemove({
       id: props.feature.id,
@@ -24,14 +24,15 @@ const AddedFeature = props => {
       price: props.feature.price
     })
   }
+ */
+console.log('props in addedFeature.js', props)
 
   const clickFeature = e => {
     e.preventDefault();
-    handleChanges();
-    props.removeFeature(featureToRemove);
+    props.removeFeature(props.feature);
   }
 
-  console.log('featureToRemove', featureToRemove);
+  //console.log('featureToRemove', featureToRemove);
 
   return (
     <li>

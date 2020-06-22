@@ -25,30 +25,27 @@ export const rootReducer = (state = initialState, action) => {
     console.log('state from rootReducer', state)
     switch (action.type) {
       case ADD_FEATURE:
-        console.log("add_feature from reducer")
+        //console.log("add_feature from reducer");
+        //console.log('action.payload.price', action.payload.price)
         return {
           ...state,
-          additionalPrice: action.payload.price,
+          additionalPrice: state.additionalPrice + action.payload.price,
           car: {
             ...state.car,
             features: [...state.car.features, action.payload]
-          }
+          },
+          additionalFeatures: state.additionalFeatures.filter(feature => feature !== action.payload)
         };
       case REMOVE_FEATURE:
+        //console.log('action.payload', action.payload)
         return {
           ...state,
+          additionalPrice: state.additionalPrice - action.payload.price,
           car: {
             ...state.car,
             features: state.car.features.filter(feature => feature !== action.payload)
-          }
-        };
-      case ADD_COST:
-        return {
-          ...state,
-          car: {
-            ...state.car,
-            price: action.payload
-          }
+          },
+          additionalFeatures: [...state.additionalFeatures, action.payload]
         };
       default:
         return state;

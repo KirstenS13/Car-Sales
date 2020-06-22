@@ -9,14 +9,14 @@ import { addFeature } from '../actions/index';
 
 
 const AdditionalFeature = props => {
-  const [newFeature, setNewFeature] = useState({
+  /* const [newFeature, setNewFeature] = useState({
     id: '',
     name: '',
     price: ''
-  })
-  const [state, dispatch] = useReducer(rootReducer, initialState);
+  }) */
+  //const [state, dispatch] = useReducer(rootReducer, initialState);
 
-  const handleChanges = () => {
+  /* const handleChanges = () => {
     console.log('props.feature in AdditionalFeature.js', props.feature);
     console.log("Add a feature has been clicked, I repeat I have been clicked");
     setNewFeature({
@@ -24,15 +24,15 @@ const AdditionalFeature = props => {
       name: props.feature.name,
       price: props.feature.price
     });
-  }
+  } */
 
   const clickFeature = e => {
     e.preventDefault();
-    handleChanges();
-    props.addFeature(newFeature);
+
+    props.addFeature(props.feature);
   }
 
-  console.log('newFeature', newFeature);
+  
 
   return (
     <li>
@@ -49,10 +49,6 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addFeature: newFeature => dispatch(addFeature(newFeature))
-  };
-};
+const mapDispatchToProps = {addFeature};
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdditionalFeature);

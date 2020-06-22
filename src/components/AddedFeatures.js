@@ -1,22 +1,22 @@
 //import useReducer
-import React, { useReducer } from 'react';
+import React from 'react';
 
 //import connect from react-redux
-import { connect } from 'react-redux';
+//import { connect } from 'react-redux';
 
 import AddedFeature from './AddedFeature';
 
 //import reducer and state
-import { initialState, rootReducer } from '../reducers/index';
+//import { initialState, rootReducer } from '../reducers/index';
 
 //import removeFeature from actions
-import { removeFeature } from '../actions/index';
+//import { removeFeature } from '../actions/index';
 
 const AddedFeatures = props => {
   //useReducer
-  const [state, dispatch] = useReducer(rootReducer, initialState);
+  //const [state, dispatch] = useReducer(rootReducer, initialState);
 
-  console.log('props in AddedFeature.js', props );
+  //console.log('props in AddedFeatures.js', props );
 
   return (
     <div className="content">
@@ -35,7 +35,7 @@ const AddedFeatures = props => {
 };
 
 //define what component needs from application store
-const mapStateToProps = state => {
+/* const mapStateToProps = state => {
   console.log('state from mapStateToProps in AddedFeatures.js', state)
   return {
     car: state.car
@@ -46,7 +46,7 @@ const mapDispatchToProps = dispatch => {
   return {
     removeFeature: featureToRemove => dispatch(removeFeature(featureToRemove))
   };
-};
+}; */
 
 //connect to store
-export default connect(mapStateToProps, mapDispatchToProps)(AddedFeatures);
+export default AddedFeatures;
