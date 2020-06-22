@@ -18,11 +18,6 @@ const Total = props => {
   console.log('state from Total.js', state);
   console.log('initialState from Total.js', initialState);
 
-  useEffect(() => {
-    setNewTotal(props.car.price + props.additionalPrice);
-    props.addCost(newTotal);
-  }, [])
-
   return (
     <div className="content">
       <h4>Total Amount: ${props.car.price}</h4>
