@@ -9,6 +9,9 @@ import AddedFeature from './AddedFeature';
 //import reducer and state
 import { initialState, rootReducer } from '../reducers/index';
 
+//import removeFeature from actions
+import { removeFeature } from '../actions/index';
+
 const AddedFeatures = props => {
   //useReducer
   const [state, dispatch] = useReducer(rootReducer, initialState);
@@ -39,5 +42,11 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    removeFeature: featureToRemove => dispatch(removeFeature(featureToRemove))
+  };
+};
+
 //connect to store
-export default connect(mapStateToProps, {})(AddedFeatures);
+export default connect(mapStateToProps, mapDispatchToProps)(AddedFeatures);

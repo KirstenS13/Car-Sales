@@ -7,6 +7,9 @@ import { connect } from 'react-redux';
 //import reducer and state
 import { initialState, rootReducer } from '../reducers/index';
 
+//import addFeature from actions
+import { addFeature } from '../actions/index';
+
 const Total = props => {
   //use useReducer
   const [state, dispatch] = useReducer(rootReducer, initialState);
@@ -30,5 +33,11 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    addFeature: newFeature => dispatch(addFeature(newFeature))
+  };
+};
+
 //connect to store
-export default connect(mapStateToProps, {})(Total);
+export default connect(mapStateToProps, mapDispatchToProps)(Total);
