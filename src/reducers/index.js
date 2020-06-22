@@ -1,6 +1,6 @@
 //create reducers here
 
-import { ADD_FEATURE, REMOVE_FEATURE } from "../actions";
+import { ADD_FEATURE, REMOVE_FEATURE, ADD_COST } from "../actions";
 
 //initialize state with the state object from App.js
 export const initialState = {
@@ -40,6 +40,14 @@ export const rootReducer = (state = initialState, action) => {
           car: {
             ...state.car,
             features: state.car.features.filter(feature => feature !== action.payload)
+          }
+        };
+      case ADD_COST:
+        return {
+          ...state,
+          car: {
+            ...state.car,
+            price: action.payload
           }
         };
       default:

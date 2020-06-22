@@ -1,5 +1,5 @@
 //import useReducer
-import React, { useReducer } from 'react';
+import React, { useEffect, useState, useReducer } from 'react';
 
 //import connect from react-redux
 import { connect } from 'react-redux';
@@ -8,18 +8,24 @@ import { connect } from 'react-redux';
 import { initialState, rootReducer } from '../reducers/index';
 
 //import addFeature from actions
-import { addFeature } from '../actions/index';
+import { addCost } from '../actions/index';
 
 const Total = props => {
   //use useReducer
   const [state, dispatch] = useReducer(rootReducer, initialState);
+  const [newTotal, setNewTotal] = useState();
 
   console.log('state from Total.js', state);
   console.log('initialState from Total.js', initialState);
 
+  useEffect(() => {
+    setNewTotal(props.car.price + props.additionalPrice);
+    props.addCost(newTotal);
+  }, [])
+
   return (
     <div className="content">
-      <h4>Total Amount: ${props.car.price + props.additionalPrice}</h4>
+      <h4>Total Amount: ${props.car.price}</h4>
     </div>
   );
 };
@@ -35,7 +41,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addFeature: newFeature => dispatch(addFeature(newFeature))
+    addCost: newTotal => dispatch(addCost(newTotal))
   };
 };
 
