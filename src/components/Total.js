@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { initialState, rootReducer } from '../reducers/index';
 
 const Total = props => {
+  //use useReducer
   const [state, dispatch] = useReducer(rootReducer, initialState);
 
   console.log('state from Total.js', state);
@@ -27,10 +28,6 @@ const mapStateToProps = state => {
     car: state.car,
     additionalPrice: state.additionalPrice
   }
-    
-    /* car: state.rootReducer.car,
-    additionalPrice: state.rootReducer.additionalPrice */
-  
 }
 
 //connect to store

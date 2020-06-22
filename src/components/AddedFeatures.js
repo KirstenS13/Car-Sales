@@ -1,11 +1,18 @@
-import React from 'react';
+//import useReducer
+import React, { useReducer } from 'react';
 
 //import connect from react-redux
 import { connect } from 'react-redux';
 
 import AddedFeature from './AddedFeature';
 
+//import reducer and state
+import { initialState, rootReducer } from '../reducers/index';
+
 const AddedFeatures = props => {
+  //useReducer
+  const [state, dispatch] = useReducer(rootReducer, initialState);
+
   return (
     <div className="content">
       <h6>Added features:</h6>
@@ -22,4 +29,13 @@ const AddedFeatures = props => {
   );
 };
 
-export default AddedFeatures;
+//define what component needs from application store
+const mapStateToProps = state => {
+  console.log('state from mapStateToProps in Total.js', state)
+  return {
+    car: state.car
+  }
+}
+
+//connect to store
+export default connect(mapStateToProps, {})(AddedFeatures);
