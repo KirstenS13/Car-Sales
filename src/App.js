@@ -1,12 +1,24 @@
 import React from 'react';
+//import createStore
+import { createStore } from 'redux';
 
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 
-const App = () => {
-  const state = {
+//import our reducer
+import { rootReducer } from './reducers/index';
+import { connect } from 'react-redux';
+
+//create store
+export const store = createStore(rootReducer);
+
+console.log('store.getState() from outside of App function', store.getState());
+console.log('store from app', store)
+
+const App = (props) => {
+  /* const state = {
     additionalPrice: 0,
     car: {
       price: 26395,
@@ -21,20 +33,28 @@ const App = () => {
       { id: 3, name: 'Premium sound system', price: 500 },
       { id: 4, name: 'Rear spoiler', price: 250 }
     ]
-  };
+  }; */
 
   return (
     <div className="boxes">
       <div className="box">
-        <Header car={state.car} />
-        <AddedFeatures car={state.car} />
+        <Header car={props.car} />
+        <AddedFeatures car={props.car} />
       </div>
       <div className="box">
-        <AdditionalFeatures additionalFeatures={state.additionalFeatures} />
-        <Total car={state.car} additionalPrice={state.additionalPrice} />
+        <AdditionalFeatures additionalFeatures={props.additionalFeatures} />
+        <Total car={props.car} additionalPrice={props.additionalPrice} />
       </div>
     </div>
   );
 };
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    car: state.car,
+    additionalFeatures: state.additionalFeatures,
+    additionalPrice: state.additionalPrice
+  }
+}
+
+export default connect(mapStateToProps, {})(App);
